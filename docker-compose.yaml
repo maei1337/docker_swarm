@@ -1,0 +1,33 @@
+version: '3.7'
+
+services:
+  service_1:
+    image: service_1
+    container_name: service_1
+    restart: always
+    build:
+      context: ./service_1
+      dockerfile: Dockerfile 
+    environment:
+      - SERVICE_NAME=service_1              
+    volumes:
+      - ./service_1:/app:cached 
+    ports:
+    - "5001:5001"        
+    expose:
+    - "5001"  
+  service_2:
+    image: service_2
+    container_name: service_2
+    restart: always
+    build:
+      context: ./service_2
+      dockerfile: Dockerfile 
+    environment:
+      - SERVICE_NAME=service_2              
+    volumes:
+      - ./service_2:/app:cached 
+    ports:
+    - "5002:5002"        
+    expose:
+    - "5002"      
